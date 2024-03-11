@@ -1,0 +1,129 @@
+
+    
+    <main>
+    
+      
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+
+   
+
+
+  <!-- FOOTER -->
+  <section class="intro" >
+    <div class="bg-image h-100" style="background-color: #6095F0;">
+      <div class="mask d-flex align-items-center h-100">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <div class="card shadow-2-strong" style="background-color: #f5f7fa;">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-borderless mb-0">
+                      <thead>
+                        <tr>
+                          <th scope="col">Detalle</th>
+                          <th scope="col">Numero Pedido</th>
+                          <th scope="col">Nombre Cliente</th>
+                          <th scope="col">Fecha de entrega</th>
+                          <th scope="col">Fecha de despacho</th>
+                          <!-- <th scope="col">Asignar guia de transporte</th> -->
+                        
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pedido of pedidos; let i = index">
+                          <td>   <button type="button" class="btn btn-primary btn-sm px-3" data-bs-toggle="modal" data-bs-target="#detalleModal" (click)="abrirDetalle(pedido.PedidoID)">
+                            Abrir
+                          </button></td>
+                          <td>{{ pedido.PedidoID }}</td>
+                          <td>{{ pedido.NombreCliente }}</td>
+                          <td>{{ pedido.FechaEntrega }}</td>
+                          <td>{{ pedido.FechaDespacho }}</td>
+                       
+                          <td>
+                            <button type="button" class="btn btn-danger btn-sm px-3" (click)="abrirDetalle(pedido.PedidoID)">
+                              <i class="fas fa-times"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  
+</main>
+
+
+
+<!-- Agrega este código en algún lugar de tu HTML, por ejemplo al final del body -->
+<div class="modal fade" id="detalleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detalles del Pedido</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID Documento</th>
+              <th>Foto Documento</th>
+              <th>Estado</th>
+              <th>Cantidad</th>             
+               <th>Fecha entrega</th>
+               <th>Fecha Despacho</th>
+
+              <!-- Agrega más encabezados de columna según sea necesario -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let documento of documentosEntrega">
+              <td>{{ documento.DocumentoEntregaID }}</td>
+              <td>
+                <!-- Mostrar botón para subir o descargar la imagen -->
+                <ng-container *ngIf="!documento.Foto_Documento; else downloadButton">
+                  <input type="file" (change)="onFileSelected($event, documento.DocumentoEntregaID)">
+                </ng-container>
+                <ng-template #downloadButton>
+                  <button class="btn btn-primary" (click)="downloadImage(documento.Foto_Documento)">Descargar</button>
+                </ng-template>
+              </td>
+              <td>{{ documento.EstadoDocumentoEntrega }}</td>
+              <td>{{ documento.Cantidad }}</td>
+              <td>{{ documento.FechaEntrega }}</td>
+              <td>{{ documento.FechaEntrega }}</td>
+
+              <!-- Agrega más columnas según sea necesario -->
+            </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+    

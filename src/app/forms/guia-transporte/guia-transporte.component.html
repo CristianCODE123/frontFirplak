@@ -1,0 +1,46 @@
+
+
+  <!-- Contact 1 - Bootstrap Brain Component -->
+  <section class="bg-light py-3 py-md-5" >
+    
+  
+    <div class="container">
+      <div class="row justify-content-lg-center">
+        <div class="col-4 col-lg-5">
+          <div class="bg-white border rounded shadow-sm overflow-hidden">
+  
+            <form [formGroup] = "FormGuia" (submit)="insertaguia()" >
+              <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
+                <label for="formFileSm" class="form-label">Transportadora</label>
+                <select formControlName = "TransportadoraID" style="width: 270px;" required  class="form-select">
+                    <option value = "1">Servientrega</option>
+                    <option value = "2">DHL</option> 
+ 
+                  </select>  
+                <div class="mb-1">
+                    <label for="formFileSm" class="form-label">Destino:</label>
+                    <input formControlName = "Destino" class="form-control form-control-sm" id="formFileSm" type="text">
+                  </div>
+                 
+                  <div class="col-12">
+                    <label for="cliente" class="form-label">Cliente:</label>
+                    <div class="input-group has-validation">
+                        <select required formControlName = "ClienteID" class="form-select" id="cliente" required (change)="onClienteSeleccionado()">
+                            <option  *ngFor="let cliente of clientes" [value]="cliente.ClienteID">{{ cliente.NombreCliente }}</option>
+                          </select>
+                      <div class="invalid-feedback">Your username is required.</div>
+                    </div>
+                  </div>
+                <div class="col-12">
+                  <div class="d-grid">
+                    <button class="btn btn-primary btn-lg" type="submit" (click)="insertaguia()">Enviar</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

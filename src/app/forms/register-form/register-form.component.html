@@ -1,0 +1,83 @@
+<div class="form">
+      
+	<ul class="tab-group">
+		<li class="tab" [class.active]="activeTab === 'signup'">
+			<a (click)="setActiveTab('signup')">Registrarse</a>
+		  </li>
+		  <li class="tab" [class.active]="activeTab === 'login'">
+			<a (click)="setActiveTab('login')">Iniciar sesion</a>
+		  </li>
+	</ul>
+	
+
+	<div class="tab-content">
+
+	@if (activeTab === 'signup') {
+
+			<h1>Registrate gratis</h1>
+			
+			<form [formGroup] = "formRegister" >
+			
+			  <div class="field-wrap">
+				<label>
+				  Nombre <span class="req">*</span>
+				</label>
+				<input formControlName = "name" type="text" required autocomplete="off" />
+			  </div>
+		  
+			  
+	
+			<div class="field-wrap">
+			  <label>
+				Email<span class="req">*</span>
+			  </label>
+			  <input formControlName = "email" type="email"required autocomplete="off"/>
+			</div>
+			
+			<div class="field-wrap">
+			  <label>
+				Contraseña<span class="req">*</span>
+			  </label>
+			  <input formControlName = "password" type="password"required autocomplete="off"/>
+			</div>
+			
+			<button type="submit" class="button button-block">Registrarse</button>
+			
+			</form>
+	
+	} @else {
+			<h1>!Bienvenido!</h1>
+			
+			<form [formGroup]="formLogin"  >
+			
+			  <div class="field-wrap">
+			  <label>
+				Email<span class="req">*</span>
+			  </label>
+			  <input formControlName  = "email" type="email"required autocomplete="off"/>
+			</div>
+			
+			<div class="field-wrap">
+			  <label>
+				Contraseña<span class="req">*</span>
+			  </label>
+			  <input formControlName="password" type="password"required autocomplete="off"/>
+			</div>
+			
+			<p class="forgot"><a >Contraseña olvidada?</a></p>
+			
+			<button class="button button-block">Iniciar Sesion</button>
+			<mat-progress-spinner  color="primary" mode="indeterminate"></mat-progress-spinner>
+
+			</form>
+	
+			  }
+
+	</div>
+	
+
+	  
+	 
+	  
+	</div><!-- tab-content -->
+	
