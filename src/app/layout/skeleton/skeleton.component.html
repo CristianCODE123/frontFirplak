@@ -25,7 +25,7 @@
                     <table class="table table-borderless mb-0">
                       <thead>
                         <tr>
-                          <th scope="col">Detalle</th>
+                          <th scope="col">Linea</th>
                           <th scope="col">Numero Pedido</th>
                           <th scope="col">Nombre Cliente</th>
                           <th scope="col">Fecha de entrega</th>
@@ -44,11 +44,7 @@
                           <td>{{ pedido.FechaEntrega }}</td>
                           <td>{{ pedido.FechaDespacho }}</td>
                        
-                          <td>
-                            <button type="button" class="btn btn-danger btn-sm px-3" (click)="abrirDetalle(pedido.PedidoID)">
-                              <i class="fas fa-times"></i>
-                            </button>
-                          </td>
+                         
                         </tr>
                       </tbody>
                     </table>
@@ -75,7 +71,7 @@
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Detalles del Pedido</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Lineas del pedido</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -85,10 +81,12 @@
               <th>ID Documento</th>
               <th>Foto Documento</th>
               <th>Estado</th>
-              <th>Cantidad</th>             
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Cantidad</th>      
                <th>Fecha entrega</th>
                <th>Fecha Despacho</th>
-
+              
               <!-- Agrega más encabezados de columna según sea necesario -->
             </tr>
           </thead>
@@ -105,8 +103,12 @@
                 </ng-template>
               </td>
               <td>{{ documento.EstadoDocumentoEntrega }}</td>
+              <td>{{ documento.NombreProducto }}</td>
+
+              <td>{{ documento.precio }}</td>
               <td>{{ documento.Cantidad }}</td>
-              <td>{{ documento.FechaEntrega }}</td>
+
+              <td>{{ documento.FechaDespacho }}</td>
               <td>{{ documento.FechaEntrega }}</td>
 
               <!-- Agrega más columnas según sea necesario -->
