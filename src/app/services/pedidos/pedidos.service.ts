@@ -29,6 +29,18 @@ export class PedidosService {
 
   }
 
+
+  
+  getPedidoLinea(pedidoId:any){
+    return this.http.post<any>(this.url+'/api/getPedidosLinea/'+pedidoId,this.httpOptions)
+
+  }
+
+  getPedidos(){
+    return this.http.get<any>(this.url+'/api/getPedidos',this.httpOptions)
+
+  }
+
   getDocumentosEntregaLinea(pedidoId:any): Observable<any>{
     return this.http.post<any>(this.url+'/api/DocumentosEntrega',pedidoId,this.httpOptions)
   }

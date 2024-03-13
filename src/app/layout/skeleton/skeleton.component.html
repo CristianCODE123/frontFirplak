@@ -78,7 +78,7 @@
         <table class="table">
           <thead>
             <tr>
-              <th>ID Documento</th>
+              <th>ID Linea</th>
               <th>Foto Documento</th>
               <th>Estado</th>
               <th>Producto</th>
@@ -92,7 +92,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let documento of documentosEntrega">
-              <td>{{ documento.DocumentoEntregaID }}</td>
+              <td>{{ documento.LineaID }}</td>
               <td>
                 <!-- Mostrar botón para subir o descargar la imagen -->
                 <ng-container *ngIf="!documento.Foto_Documento; else downloadButton">
@@ -102,7 +102,7 @@
                   <button class="btn btn-primary" (click)="downloadImage(documento.Foto_Documento)">Descargar</button>
                 </ng-template>
               </td>
-              <td>{{ documento.EstadoDocumentoEntrega }}</td>
+              <td>{{ documento.EstadoPedido }}</td>
               <td>{{ documento.NombreProducto }}</td>
 
               <td>{{ documento.precio }}</td>

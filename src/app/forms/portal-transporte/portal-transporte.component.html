@@ -7,10 +7,35 @@
     <div class="container">
       <div class="row justify-content-lg-center">
         <div class="col-4 col-lg-5">
+          <div  class=" text-center">
+            <h2>Formulario POD</h2>
+          </div>
           <div class="bg-white border rounded shadow-sm overflow-hidden">
   
             <form (submit)="insertarPOD($event)" enctype="multipart/form-data">
               <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
+                 
+                <div class="col-12">
+                  <label for="cliente" class="form-label">ID Pedido:</label>
+                  <div class="input-group has-validation">
+                      <select required formControlName="ClienteID" class="form-select" id="NumPedido" name="NumPedido" required (change)="capturarIdPedido($event)">
+                          <option *ngFor="let pedido of pedidos" [value]="pedido.PedidoID">{{ pedido.PedidoID}}</option>
+                      </select>
+                      <div class="invalid-feedback">Your username is required.</div>
+                  </div>
+              </div>
+
+              <div  *ngIf="pedidoSeleccionado" class="col-12">
+                <label for="cliente" class="form-label">ID Linea pedido:</label>
+                <div class="input-group has-validation">
+                  <select required formControlName="ClienteID" class="form-select" id="NumPedidoLinea" name="NumPedidoLinea" required >
+                    <option *ngFor="let pedidoLinea of pedidosLinea" [value]="pedidoLinea.LineaID">{{ pedidoLinea.LineaID}}</option>
+                </select>
+                    <div class="invalid-feedback">Your username is required.</div>
+                </div>
+            </div>
+
+
                 <div class="mb-1">
                   <label for="Foto_POD" class="form-label">Fotografia guia de transporte:</label>
                   <input name="Foto_POD" class="form-control form-control-sm" id="Foto_POD" type="file">
@@ -39,7 +64,7 @@
         </div>
       </div>
     </div>
-    <table class="table">
+    <table style = "margin-top: 2em;" class="table">
       <thead>
         <tr>
           <th>Guía de Transporte ID</th>
